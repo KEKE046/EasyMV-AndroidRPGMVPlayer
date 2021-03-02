@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="audio_ext">
+        <item>use default settings of game</item>
+        <item>use .ogg </item>
+        <item>use .m4a</item>
+    </string-array>
+    <string-array name="audio_ext_value">
+        <item>null</item>
+        <item>.ogg</item>
+        <item>.m4a</item>
+    </string-array>
+</resources>

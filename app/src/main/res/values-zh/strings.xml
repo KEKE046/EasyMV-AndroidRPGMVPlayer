@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EasyMV</string>
+    <string name="menu_refresh">刷新</string>
+    <string name="menu_settings">设置</string>
+    <string name="title_activity_settings">设置</string>
+
+    <string name="cancel">取消</string>
+    <string name="quit">退出</string>
+    <string name="select_folder">选择路径</string>
+
+    <string name="game_settings">游戏设置</string>
+    <string name="set_title">游戏标题</string>
+    <string name="set_title_comment">设置一个标题</string>
+    <string name="fix_local_storage">存档放在本地</string>
+    <string name="fix_local_storage_comment">将存档放在游戏目录下，即使删掉EasyMV也不会消失。强烈建议打开此选项。</string>
+    <string name="bootstrap">使用启动器</string>
+    <string name="bootstrap_comment">启动器会自动设置Canvas, Webgl 和声音</string>
+    <string name="force_audio_ext">音频文件后缀名</string>
+    <string name="force_audio_ext_comment">如果游戏出现LoadError，修改这个选项</string>
+    <string name="show_fps">显示FPS</string>
+    <string name="show_fps_comment">游戏中显示FPS</string>
+    <string name="back_button_quit">返回键退出游戏</string>
+    <string name="back_button_quit_comment">设置返回键用来退出游戏，还是当做游戏中B键来用</string>
+    <string name="force_canvas">强制使用Canvas</string>
+    <string name="force_canvas_comment">强制使用Canvas渲染，默认是用性能更好的webgl</string>
+    <string name="force_no_audio">强制关闭声音</string>
+    <string name="force_no_audio_comment">播放声音出错可以打开这个选项</string>
+
+    <string name="unable_to_save">警告：无法存档</string>
+    <string name="unable_to_load">警告：无法读取存档</string>
+
+    <string name="search_path">搜索路径：</string>
+
+    <string-array name="quit_message">
+        <item>确定退出 $1？</item>
+        <item>未保存的游戏数据会消失</item>
+    </string-array>
+
+</resources>

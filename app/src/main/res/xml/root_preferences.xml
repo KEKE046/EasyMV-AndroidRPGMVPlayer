@@ -1,0 +1,65 @@
+<!--
+  ~ Copyright 2018 The app Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/game_settings">
+        <EditTextPreference
+            android:key="edit_title"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="@string/set_title_comment"
+            android:title="@string/set_title" />
+        <ListPreference
+            android:defaultValue="null"
+            android:entries="@array/audio_ext"
+            android:entryValues="@array/audio_ext_value"
+            android:key="list_force_audio_ext"
+            android:summary="@string/force_audio_ext_comment"
+            android:title="@string/force_audio_ext" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="switch_local_storage"
+            android:summary="@string/fix_local_storage_comment"
+            android:title="@string/fix_local_storage" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="switch_bootstrap"
+            android:summary="@string/bootstrap_comment"
+            android:title="@string/bootstrap" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="switch_show_fps"
+            android:summary="@string/show_fps_comment"
+            android:title="@string/show_fps" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="switch_back_button_quit"
+            android:summary="@string/back_button_quit_comment"
+            android:title="@string/back_button_quit" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="switch_force_canvas"
+            android:summary="@string/force_audio_ext_comment"
+            android:title="@string/force_canvas" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="switch_force_no_audio"
+            android:summary="@string/force_no_audio_comment"
+            android:title="@string/force_no_audio" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
