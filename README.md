@@ -50,3 +50,4 @@ gamedir
 * The configuration file of EasyMV is saved in ` www/EasyMV.properties `
 * The title in the settings can be different from the folder name (you can even enter multiple lines of text).
 * If you need to inject JavaScript into the game, you can directly modify `index.html`.
+* Noel is so cute, I highly recommend the game "**Noel the Motal Fate**" (in fact, this is why I make this repo :-)
