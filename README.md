@@ -1,6 +1,6 @@
 ## EasyMV-AndroidRPGMVPlayer
 
-A simple webview player to play RPGMV games on Android platform.
+A simple webview player app to play RPGMV games on Android platform.
 
 [中文说明](README.zh.md)
 
@@ -20,7 +20,8 @@ EasyMV refers to the above two projects and has the following characteristics:
 * Solve the problem that `.m4a` file cannot be found on mobile devices.
 * Rendering and sound can automatically set up by bootstraper .
 
-![](app.jpg)
+<img src='app.jpg' width='80%'/>
+<img src='app2.jpg' width=80%'/>
 
 # How to use
 
