@@ -32,6 +32,17 @@ EasyMV refers to the above two projects and has the following characteristics:
 5. For many games, you may need to change the audio ext to `use .ogg`.
 6. Change the settings and play happily.
 
+```
+gamedir
+|-- noel s1(rename the www folder to what you want)
+|   |-- index.html
+|   |-- ......
+|-- noel s2(rename the www folder to what you want)
+|   |-- index.html
+|   |-- ......
+|-- ......
+```
+
 # Hint
 
 * `www/icon/ icon.png ` is considered as the icon of the game.
