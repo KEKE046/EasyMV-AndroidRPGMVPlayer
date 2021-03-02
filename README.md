@@ -29,7 +29,8 @@ EasyMV refers to the above two projects and has the following characteristics:
 2. Copy the `www` folder out and rename it.
 3. Many renamed `www` games are placed in the same directory.
 4. Add this directory to EasyMV (the setting button in the upper right corner).
-5. Change the settings and play happily.
+5. For many games, you may need to change the audio ext to `use .ogg`.
+6. Change the settings and play happily.
 
 # Hint
 
