@@ -3,20 +3,18 @@
 
 # 简介
 
-RPGMakerMV生成游戏是在网页上运行的，理论上有移植到安卓平台的潜力。但网上没有什么好的工具，已有的工具也都有各种各样的缺陷。
-
-* [mv-android-client](https://github.com/AltimitSystems/mv-android-client) 项目可以将RPGMV的游戏打包成一个apk，但是需要下一个Android Studio，还有好多配置，非常麻烦。
-  * 而且一旦卸载了apk，游戏存档就会消失。
-* [AndroidLocalStorage](https://github.com/didimoo/AndroidLocalStorage) 项目提供了一种将`localStorage`储存在本地的方法，但该项目无法运行。
-  * 经过修改，项目可以运行，但在玩游戏时卡顿严重，性能极差。
-
-EasyMV 参考了上述两项目，具有以下特点：
+EasyMV 具有以下特点：
 * 将游戏存档防止在游戏目录下，即使卸载程序存档依然存在。
 * 操作简单，将游戏中`www`文件夹放在在搜索路径即可。
+* 提供了fake_greenworks.js。调用greenworks.js向steam发送信息的游戏也可以启动。
+* 没有操作手柄的游戏可以显示虚拟操作手柄。
+* 提供了手动启动模式，解决部分游戏启动时会测试appid是否正确导致无法启动的问题。
 * 解决移动设备上音频`.m4a`无法找到的问题。
-* 借鉴了`mv-android-client`中的启动器，可以自动设置渲染和声音。
+* 使用启动器，可以自动设置渲染和声音。
 
-![](app.jpg)
+<img src='app.jpg' width='80%'/>
+<img src='app2.jpg' width=80%'/>
+
 
 # 如何使用
 
@@ -43,5 +41,15 @@ gamedir
 * 存档保存在`www/save/EasyMV.save`。
 * EasyMV的配置文件保存在`www/EasyMV.properties`文件里。
 * 设置中的标题可以和文件名不一样（甚至可以输入多行文本）。
+* fake_greenworks.js中很多函数没有完全实现，如果你有需要，可以修改后直接写在游戏的index.html里面。
 * 如果需要对游戏注入javascript，可以直接在index.html里面改。
 * 诺艾尔太可爱了，强烈安利《被虐的诺艾尔》
+
+# 参考
+
+RPGMakerMV生成游戏是在网页上运行的，理论上有移植到安卓平台的潜力。但网上没有什么好的工具，已有的工具也都有各种各样的缺陷。
+
+* [mv-android-client](https://github.com/AltimitSystems/mv-android-client) 项目可以将RPGMV的游戏打包成一个apk，但是需要下一个Android Studio，还有好多配置，非常麻烦。
+  * 而且一旦卸载了apk，游戏存档就会消失。
+* [AndroidLocalStorage](https://github.com/didimoo/AndroidLocalStorage) 项目提供了一种将`localStorage`储存在本地的方法，但该项目无法运行。
+  * 经过修改，项目可以运行，但在玩游戏时卡顿严重，性能极差。
