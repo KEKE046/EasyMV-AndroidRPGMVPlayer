@@ -16,6 +16,7 @@ public class PlayerConfig {
     boolean FIX_LOCALSTORAGE = true;
     boolean ADD_GAMEPAD = false;
     boolean MANUALLY_START = false;
+    boolean FAKE_GREENWORKS = false;
     String FORCE_AUDIO_EXT = "";
     String indexPage = "";
     public String title = "";
@@ -30,6 +31,7 @@ public class PlayerConfig {
         result.setProperty("FIX_LOCALSTORAGE", this.FIX_LOCALSTORAGE ? "yes" : "no");
         result.setProperty("ADD_GAMEPAD", this.ADD_GAMEPAD ? "yes" : "no");
         result.setProperty("MANUALLY_START", this.MANUALLY_START ? "yes" : "no");
+        result.setProperty("FAKE_GREENWORKS", this.FAKE_GREENWORKS ? "yes" : "no");
         result.setProperty("FORCE_AUDIO_EXT", this.FORCE_AUDIO_EXT);
         result.setProperty("title", this.title);
         return result;
@@ -46,6 +48,7 @@ public class PlayerConfig {
         config.FIX_LOCALSTORAGE = properties.getProperty("FIX_LOCALSTORAGE", valYes).equals("yes");
         config.ADD_GAMEPAD = properties.getProperty("ADD_GAMEPAD", valNo).equals("yes");
         config.MANUALLY_START = properties.getProperty("MANUALLY_START", valNo).equals("yes");
+        config.FAKE_GREENWORKS = properties.getProperty("FAKE_GREENWORKS", valYes).equals("yes");
         config.FORCE_AUDIO_EXT = properties.getProperty("FORCE_AUDIO_EXT", "");
         config.title = properties.getProperty("title", "");
         return config;

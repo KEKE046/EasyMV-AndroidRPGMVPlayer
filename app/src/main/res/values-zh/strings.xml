@@ -45,5 +45,7 @@
     <string name="add">添加</string>
     <string name="about">关于</string>
     <string name="help">帮助</string>
+    <string name="fake_greenworks">使用假的greenworks.js</string>
+    <string name="fake_greenworks_comment">游戏可能会使用greenworks.js向steam发送成就，这时会产生错误。使用假的greenworks.js来阻止错误。</string>
 
 </resources>

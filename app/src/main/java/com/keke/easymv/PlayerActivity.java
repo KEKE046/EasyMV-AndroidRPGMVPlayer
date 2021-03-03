@@ -183,7 +183,7 @@ public class PlayerActivity extends AppCompatActivity {
 
     public String buildUri(boolean webgl, boolean webaudio) {
         String uri = Uri.fromFile(new File(playerConfig.indexPage)).toString();
-        if(webgl) {
+        if(webgl && !playerConfig.FORCE_CANVAS) {
             uri += "?" + getString(R.string.query_webgl);
         }
         else {
@@ -336,6 +336,10 @@ public class PlayerActivity extends AppCompatActivity {
                 }
                 if(playerConfig.ADD_GAMEPAD) {
                     String code = getRawString(R.raw.gamepad);
+                    view.evaluateJavascript(code, null);
+                }
+                if(playerConfig.FAKE_GREENWORKS) {
+                    String code = getRawString(R.raw.fake_greenworks);
                     view.evaluateJavascript(code, null);
                 }
             }

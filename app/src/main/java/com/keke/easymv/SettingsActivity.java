@@ -43,7 +43,7 @@ public class SettingsActivity extends AppCompatActivity {
         private EditTextPreference editTitle;
         private SwitchPreference switchLocalStorage, switchBootstrap, switchShowFPS;
         private SwitchPreference switchBackButtonQuit, switchForceCanvas, switchForceNoAudio;
-        private SwitchPreference switchGamepad, switchManuallyStart;
+        private SwitchPreference switchGamepad, switchManuallyStart, switchFakeGreenworks;
         private ListPreference listForceAudioExt;
         private File settingFile;
         private PlayerConfig config;
@@ -59,6 +59,7 @@ public class SettingsActivity extends AppCompatActivity {
             switchLocalStorage = findPreference("switch_local_storage");
             switchGamepad = findPreference("switch_add_gamepad");
             switchManuallyStart = findPreference("switch_mannully_start");
+            switchFakeGreenworks = findPreference("switch_fake_greenworks");
             listForceAudioExt = findPreference("list_force_audio_ext");
             editTitle = findPreference("edit_title");
             getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
@@ -77,6 +78,7 @@ public class SettingsActivity extends AppCompatActivity {
             config.FIX_LOCALSTORAGE = switchLocalStorage.isChecked();
             config.ADD_GAMEPAD = switchGamepad.isChecked();
             config.MANUALLY_START = switchManuallyStart.isChecked();
+            config.FAKE_GREENWORKS = switchFakeGreenworks.isChecked();
             config.FORCE_AUDIO_EXT = listForceAudioExt.getValue().equals("null") ? "" : listForceAudioExt.getValue();
             config.title = editTitle.getText();
             if(!config.store(settingFile)) {
@@ -106,6 +108,7 @@ public class SettingsActivity extends AppCompatActivity {
             switchLocalStorage.setChecked(config.FIX_LOCALSTORAGE);
             switchGamepad.setChecked(config.ADD_GAMEPAD);
             switchManuallyStart.setChecked(config.MANUALLY_START);
+            switchFakeGreenworks.setChecked(config.FAKE_GREENWORKS);
             listForceAudioExt.setValue(config.FORCE_AUDIO_EXT.equals("") ? "null" : config.FORCE_AUDIO_EXT);
             editTitle.setText(config.title);
         }

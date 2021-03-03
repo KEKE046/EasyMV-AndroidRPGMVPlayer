@@ -59,6 +59,11 @@
             android:title="@string/fix_local_storage" />
         <SwitchPreference
             android:defaultValue="false"
+            android:key="switch_fake_greenworks"
+            android:summary="@string/fake_greenworks_comment"
+            android:title="@string/fake_greenworks" />
+        <SwitchPreference
+            android:defaultValue="false"
             android:key="switch_bootstrap"
             android:summary="@string/bootstrap_comment"
             android:title="@string/bootstrap" />

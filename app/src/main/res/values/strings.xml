@@ -44,5 +44,7 @@
     <string name="add">Add</string>
     <string name="about">About</string>
     <string name="help">Help</string>
+    <string name="fake_greenworks">Use Fake greenworks.js</string>
+    <string name="fake_greenworks_comment">Game may use greenworks.js to submit archievement to steam. Use fake greenworks to prevent error.</string>
 
 </resources>
