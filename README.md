@@ -2,6 +2,10 @@
 
 A simple webview player app to play RPGMV games on Android platform.
 
+Author: KEKE_046
+
+Version: v1.1.0
+
 [中文说明](README.zh.md)
 
 # Introduction
@@ -16,8 +20,8 @@ EasyMV refers to the above two projects and has the following characteristics:
 * Solve the problem that `.m4a` file cannot be found on mobile devices.
 * Rendering and sound can automatically set up by bootstraper .
 
-<img src='app.jpg' width='80%'/>
-<img src='app2.jpg' width=80%'/>
+<img src='fig/app1.jpg'/>
+<img src='fig/app2.jpg'/>
 
 # How to use
 
@@ -39,14 +43,29 @@ gamedir
 |-- ......
 ```
 
+## Launch "Noel the Mortal Fate"
+<img src='fig/noel.png'/>
+
+1. put `www` folder to your game directory.
+2. open settings and set `Force Audio Extension` to `use .ogg`.
+
+## Launch "Fireworks"
+<img src='fig/fireworks.png'/>
+
+1. put `www` folder to your game firectory.
+2. open settings and switch on these `Manually Start`, `Add Gamepad`, `Use Fake greenworks.js`.
+3. recommend to open `Show FPS`.
+
+
 # Hint
 
 * `www/icon/ icon.png ` is considered as the icon of the game.
 * game savings are at ` www/save/EasyMV.save`
 * The configuration file of EasyMV is saved in ` www/EasyMV.properties `
 * The title in the settings can be different from the folder name (you can even enter multiple lines of text).
+* many API are not implemented in `fake_greenworks.js`, you can implement what you want and inject it into `index.html`.
 * If you need to inject JavaScript into the game, you can directly modify `index.html`.
-* Noel is so cute, I highly recommend the game "**Noel the Motal Fate**" (in fact, this is why I make this repo :-)
+* Noel is so cute, that I make this repo. I highly recommend the game "**Noel the Motal Fate**".
 
 # Reference
 

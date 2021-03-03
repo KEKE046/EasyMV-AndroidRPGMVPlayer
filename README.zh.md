@@ -1,6 +1,10 @@
 ## EasyMV-AndroidRPGMVPlayer
 一个简单的安卓RPGMV游戏启动器。
 
+作者: KEKE_046
+
+版本: v1.1.0
+
 # 简介
 
 EasyMV 具有以下特点：
@@ -12,8 +16,8 @@ EasyMV 具有以下特点：
 * 解决移动设备上音频`.m4a`无法找到的问题。
 * 使用启动器，可以自动设置渲染和声音。
 
-<img src='app.jpg' width='80%'/>
-<img src='app2.jpg' width=80%'/>
+<img src='fig/app1.jpg'/>
+<img src='fig/app2.jpg'/>
 
 
 # 如何使用
@@ -35,14 +39,29 @@ gamedir
 |-- ......
 ```
 
+## 启动"被虐的诺艾尔"
+<img src='fig/noel.png'/>
+
+1. 将`www`文件夹放到你的游戏目录。
+2. 将设置中的`音频文件后缀名`改成`强制使用.ogg`。
+3. 愉快地游戏吧！
+
+## 启动"烟火"
+<img src='fig/fireworks.png'/>
+
+1. 将`www`文件夹放到你的游戏目录。
+2. 打开`手动模式启动`，`加入虚拟操作杆`，`使用假的greenwork.js`。
+3. 烟火在游戏中会有突然FPS降低的情况，建议打开`显示FPS`。
+4. 愉快地游戏吧！
+
 # Hint
 
 * `www/icon/icon.png`作为游戏的图标。
 * 存档保存在`www/save/EasyMV.save`。
 * EasyMV的配置文件保存在`www/EasyMV.properties`文件里。
 * 设置中的标题可以和文件名不一样（甚至可以输入多行文本）。
-* fake_greenworks.js中很多函数没有完全实现，如果你有需要，可以修改后直接写在游戏的index.html里面。
-* 如果需要对游戏注入javascript，可以直接在index.html里面改。
+* `fake_greenworks.js`中很多函数没有完全实现，如果你有需要，可以修改后直接写在游戏的`index.html`里面。
+* 如果需要对游戏注入javascript，可以直接在`index.html`里面改。
 * 诺艾尔太可爱了，强烈安利《被虐的诺艾尔》
 
 # 参考
