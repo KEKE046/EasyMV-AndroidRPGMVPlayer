@@ -1,6 +1,6 @@
 ## EasyMV-AndroidRPGMVPlayer
 
-A simple webview player to play RPGMV games on Android platform.
+A simple webview player app to play RPGMV games on Android platform.
 
 [中文说明](README.zh.md)
 
@@ -20,7 +20,8 @@ EasyMV refers to the above two projects and has the following characteristics:
 * Solve the problem that `.m4a` file cannot be found on mobile devices.
 * Rendering and sound can automatically set up by bootstraper .
 
-![](app.jpg)
+<img src='app.jpg' width='80%'/>
+<img src='app2.jpg' width=80%'/>
 
 # How to use
 
@@ -28,7 +29,19 @@ EasyMV refers to the above two projects and has the following characteristics:
 2. Copy the `www` folder out and rename it.
 3. Many renamed `www` games are placed in the same directory.
 4. Add this directory to EasyMV (the setting button in the upper right corner).
-5. Change the settings and play happily.
+5. For many games, you may need to change the audio ext to `use .ogg`.
+6. Change the settings and play happily.
+
+```
+gamedir
+|-- noel s1(rename the www folder to what you want)
+|   |-- index.html
+|   |-- ......
+|-- noel s2(rename the www folder to what you want)
+|   |-- index.html
+|   |-- ......
+|-- ......
+```
 
 # Hint
 
@@ -37,3 +50,4 @@ EasyMV refers to the above two projects and has the following characteristics:
 * The configuration file of EasyMV is saved in ` www/EasyMV.properties `
 * The title in the settings can be different from the folder name (you can even enter multiple lines of text).
 * If you need to inject JavaScript into the game, you can directly modify `index.html`.
+* Noel is so cute, I highly recommend the game "**Noel the Motal Fate**" (in fact, this is why I make this repo :-)
