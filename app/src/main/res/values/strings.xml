@@ -9,6 +9,8 @@
     <string name="select_folder">Select Folder</string>
 
     <string name="game_settings">Game Settings</string>
+    <string name="compatibility_settings">Compatibility</string>
+
     <string name="set_title">Set Title</string>
     <string name="set_title_comment">specify a title to display</string>
     <string name="fix_local_storage">LocalStorage</string>
@@ -25,6 +27,9 @@
     <string name="force_canvas_comment">forcibly use canvas to render</string>
     <string name="force_no_audio">Force No Audio</string>
     <string name="force_no_audio_comment">forcibly turn off the sound, turn on this when error occurs</string>
+    <string name="add_gamepad">Add Gamepad</string>
+    <string name="manually_start">Manually Start</string>
+    <string name="manually_start_comment">execute command "SceneManager.run(Scene_Boot);" manually, turn on when game cannot start. </string>
 
     <string name="search_path">Search Path</string>
 
@@ -35,5 +40,9 @@
         <item>Do you wish to quit $1?</item>
         <item>Any unsaved progress will be lost.</item>
     </string-array>
+    <string name="add_gamepad_comment">only need to add when no gamepad occurs</string>
+    <string name="add">Add</string>
+    <string name="about">About</string>
+    <string name="help">Help</string>
 
 </resources>

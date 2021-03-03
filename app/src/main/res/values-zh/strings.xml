@@ -10,6 +10,8 @@
     <string name="select_folder">选择路径</string>
 
     <string name="game_settings">游戏设置</string>
+    <string name="compatibility_settings">兼容性设置</string>
+
     <string name="set_title">游戏标题</string>
     <string name="set_title_comment">设置一个标题</string>
     <string name="fix_local_storage">存档放在本地</string>
@@ -26,6 +28,10 @@
     <string name="force_canvas_comment">强制使用Canvas渲染，默认是用性能更好的webgl</string>
     <string name="force_no_audio">强制关闭声音</string>
     <string name="force_no_audio_comment">播放声音出错可以打开这个选项</string>
+    <string name="add_gamepad">加入虚拟操作杆</string>
+    <string name="add_gamepad_comment">如果游戏已经有操作杆就不需要加入了</string>
+    <string name="manually_start">手动模式启动</string>
+    <string name="manually_start_comment">手动执行SceneManager.run(Scene_Boot);启动游戏，游戏无法启动请打开此选项</string>
 
     <string name="unable_to_save">警告：无法存档</string>
     <string name="unable_to_load">警告：无法读取存档</string>
@@ -36,5 +42,8 @@
         <item>确定退出 $1？</item>
         <item>未保存的游戏数据会消失</item>
     </string-array>
+    <string name="add">添加</string>
+    <string name="about">关于</string>
+    <string name="help">帮助</string>
 
 </resources>

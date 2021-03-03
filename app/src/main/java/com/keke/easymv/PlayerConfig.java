@@ -8,17 +8,19 @@ import java.io.StringWriter;
 import java.util.Properties;
 
 public class PlayerConfig {
-    public boolean SHOW_FPS = false;
-    public boolean BACK_BUTTON_QUITS = true;
-    public boolean BOOTSTRAP_INTERFACE = true;
-    public boolean FORCE_CANVAS = false;
-    public boolean FORCE_NO_AUDIO = false;
-    public boolean FIX_LOCALSTORAGE = true;
-    public String FORCE_AUDIO_EXT = "";
-    public String indexPage = "";
+    boolean SHOW_FPS = false;
+    boolean BACK_BUTTON_QUITS = true;
+    boolean BOOTSTRAP_INTERFACE = true;
+    boolean FORCE_CANVAS = false;
+    boolean FORCE_NO_AUDIO = false;
+    boolean FIX_LOCALSTORAGE = true;
+    boolean ADD_GAMEPAD = false;
+    boolean MANUALLY_START = false;
+    String FORCE_AUDIO_EXT = "";
+    String indexPage = "";
     public String title = "";
 
-    public Properties toProperties() {
+    private Properties toProperties() {
         Properties result = new Properties();
         result.setProperty("SHOW_FPS", this.SHOW_FPS ? "yes" : "no");
         result.setProperty("BACK_BUTTON_QUITS", this.BACK_BUTTON_QUITS ? "yes" : "no");
@@ -26,12 +28,14 @@ public class PlayerConfig {
         result.setProperty("FORCE_CANVAS", this.FORCE_CANVAS ? "yes" : "no");
         result.setProperty("FORCE_NO_AUDIO", this.FORCE_NO_AUDIO ? "yes" : "no");
         result.setProperty("FIX_LOCALSTORAGE", this.FIX_LOCALSTORAGE ? "yes" : "no");
+        result.setProperty("ADD_GAMEPAD", this.ADD_GAMEPAD ? "yes" : "no");
+        result.setProperty("MANUALLY_START", this.MANUALLY_START ? "yes" : "no");
         result.setProperty("FORCE_AUDIO_EXT", this.FORCE_AUDIO_EXT);
         result.setProperty("title", this.title);
         return result;
     }
 
-    public static PlayerConfig fromPropertirs(Properties properties) {
+    private static PlayerConfig fromPropertirs(Properties properties) {
         PlayerConfig config = new PlayerConfig();
         String valYes = "yes", valNo = "no";
         config.SHOW_FPS = properties.getProperty("SHOW_FPS", valNo).equals("yes");
@@ -40,24 +44,32 @@ public class PlayerConfig {
         config.FORCE_CANVAS = properties.getProperty("FORCE_CANVAS", valNo).equals("yes");
         config.FORCE_NO_AUDIO = properties.getProperty("FORCE_NO_AUDIO", valNo).equals("yes");
         config.FIX_LOCALSTORAGE = properties.getProperty("FIX_LOCALSTORAGE", valYes).equals("yes");
+        config.ADD_GAMEPAD = properties.getProperty("ADD_GAMEPAD", valNo).equals("yes");
+        config.MANUALLY_START = properties.getProperty("MANUALLY_START", valNo).equals("yes");
         config.FORCE_AUDIO_EXT = properties.getProperty("FORCE_AUDIO_EXT", "");
         config.title = properties.getProperty("title", "");
         return config;
     }
 
-    public static PlayerConfig fromFile(File file) {
+    static PlayerConfig fromFile(File file) {
         try{
             Properties pps = new Properties();
             pps.load(new FileInputStream(file));
             return fromPropertirs(pps);
         } catch (Exception e) {
             PlayerConfig result = new PlayerConfig();
-            result.title = file.getParentFile().getName();
+            File parent = file.getParentFile();
+            if(parent != null) {
+                result.title = parent.getName();
+            }
+            else {
+                result.title = "<???>";
+            }
             return result;
         }
     }
 
-    public boolean store(File file) {
+    boolean store(File file) {
         try {
             Properties pps = toProperties();
             pps.store(new FileOutputStream(file), "");

@@ -8,13 +8,10 @@ import androidx.core.app.ActivityCompat;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,30 +26,21 @@ import android.widget.TextView;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 class GameItem {
     public String title;
-    public File rootDir;
-    public File indexPage;
-    public Bitmap icon;
-    public File settingFile;
-
-    public GameItem() { }
-
-    public GameItem(String title) {
-        this.title = title;
-    }
+    File indexPage;
+    Bitmap icon;
+    File settingFile;
 
     @Nullable
-    public static GameItem fromDir(File path) {
+    static GameItem fromDir(File path) {
         File iconFile = new File(path ,"icon/icon.png");
         File indexPage = new File(path ,"index.html");
         if(!indexPage.exists())
             return null;
         GameItem gameItem = new GameItem();
-        gameItem.rootDir = path;
         gameItem.indexPage = indexPage;
         gameItem.title = path.getName();
         gameItem.settingFile = new File(path, "EasyMV.properties");
@@ -67,9 +55,9 @@ class GameItem {
 }
 
 class GameItemAdapter extends ArrayAdapter<GameItem> {
-    private int viewId = 0;
-    MainActivity activity;
-    public GameItemAdapter(MainActivity context, int textViewResourceId, List<GameItem> objects){
+    private int viewId;
+    private MainActivity activity;
+    GameItemAdapter(MainActivity context, int textViewResourceId, List<GameItem> objects){
         super(context, textViewResourceId, objects);
         activity = context;
         viewId = textViewResourceId;
@@ -184,14 +172,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch(requestCode) {
-            case ACTION_PICK_PATH:
-                if(resultCode == RESULT_OK) {
-                    searchDir = data.getStringArrayListExtra("paths");
-                    tinyDB.putListString("searchDir", searchDir);
+        if(requestCode == ACTION_PICK_PATH) {
+            if(resultCode == RESULT_OK && data != null) {
+                ArrayList<String> ret = data.getStringArrayListExtra("paths");
+                if(ret != null) {
+                    searchDir = ret;
+                    tinyDB.putListString("searchDir", ret);
                     refresh();
                 }
-                break;
+            }
         }
     }
 

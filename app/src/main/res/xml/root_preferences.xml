@@ -14,8 +14,7 @@
   ~ limitations under the License.
   -->
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="@string/game_settings">
         <EditTextPreference
             android:key="edit_title"
@@ -23,13 +22,36 @@
             android:singleLine="true"
             android:summary="@string/set_title_comment"
             android:title="@string/set_title" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="switch_show_fps"
+            android:summary="@string/show_fps_comment"
+            android:title="@string/show_fps" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="switch_back_button_quit"
+            android:summary="@string/back_button_quit_comment"
+            android:title="@string/back_button_quit" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/compatibility_settings">
+
         <ListPreference
-            android:defaultValue="null"
+            android:defaultValue=".ogg"
             android:entries="@array/audio_ext"
             android:entryValues="@array/audio_ext_value"
             android:key="list_force_audio_ext"
             android:summary="@string/force_audio_ext_comment"
             android:title="@string/force_audio_ext" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="switch_mannully_start"
+            android:summary="@string/manually_start_comment"
+            android:title="@string/manually_start" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="switch_add_gamepad"
+            android:summary="@string/add_gamepad_comment"
+            android:title="@string/add_gamepad" />
         <SwitchPreference
             android:defaultValue="false"
             android:key="switch_local_storage"
@@ -42,18 +64,8 @@
             android:title="@string/bootstrap" />
         <SwitchPreference
             android:defaultValue="false"
-            android:key="switch_show_fps"
-            android:summary="@string/show_fps_comment"
-            android:title="@string/show_fps" />
-        <SwitchPreference
-            android:defaultValue="true"
-            android:key="switch_back_button_quit"
-            android:summary="@string/back_button_quit_comment"
-            android:title="@string/back_button_quit" />
-        <SwitchPreference
-            android:defaultValue="false"
             android:key="switch_force_canvas"
-            android:summary="@string/force_audio_ext_comment"
+            android:summary="@string/force_canvas_comment"
             android:title="@string/force_canvas" />
         <SwitchPreference
             android:defaultValue="false"

@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=UTF-8>
+        <style>
+            body{background-color:black}
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function webgl(){
+                try{
+                    var e=document.createElement("canvas");
+                    return !!e.getContext("webgl") || !!e.getContext("experimental-webgl");
+                }catch(e){
+                    return false;
+                }
+            }
+            function webaudio() {
+                try {
+                    var e=null;
+                    if(typeof AudioContext != "undefined") {
+                        e=new AudioContext;
+                    }
+                    else if(typeof webkitAudioContext != "undefined") {
+                        e=new webkitAudioContext;
+                    }
+                    return !!e;
+                }catch(e) {
+                    return false;
+                }
+            }
+            __bootstrap.boot(webgl(), webaudio());
+        </script>
+    </body>
+</html>

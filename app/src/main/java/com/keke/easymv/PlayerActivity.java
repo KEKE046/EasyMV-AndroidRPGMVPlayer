@@ -6,23 +6,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.icu.util.LocaleData;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.AttributeSet;
-import android.util.Base64;
 import android.util.Log;
 import android.webkit.ConsoleMessage;
 import android.webkit.JavascriptInterface;
@@ -35,9 +30,12 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Properties;
 
 class PlayerView extends WebView {
@@ -58,6 +56,7 @@ class PlayerView extends WebView {
     }
 
     @SuppressLint("SetJavaScriptEnabled")
+    @SuppressWarnings("deprecation")
     public void init() {
         setBackgroundColor(Color.BLACK);
         WebSettings webSettings = getSettings();
@@ -94,6 +93,21 @@ public class PlayerActivity extends AppCompatActivity {
     LocalStorageJavaScriptInterface localStorageFixer;
     private AlertDialog mQuitDialog;
     private File saveFile;
+
+    public String getRawString(int id) {
+        InputStream is = getResources().openRawResource(id);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        StringBuilder sb = new StringBuilder();
+        String line;
+        try {
+            while((line = reader.readLine()) != null) {
+                sb.append(line).append('\n');
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        return sb.toString();
+    }
 
     @Override
     public SQLiteDatabase openOrCreateDatabase(String name, int mode, SQLiteDatabase.CursorFactory factory, DatabaseErrorHandler errorHandler) {
@@ -158,7 +172,8 @@ public class PlayerActivity extends AppCompatActivity {
         }
         if(playerConfig.BOOTSTRAP_INTERFACE){
             playerView.addJavascriptInterface(new Bootstrapper(), getString(R.string.bootstrap_object));
-            playerView.loadData(getString(R.string.bootstrap_html),"text/html", "base64");
+            playerView.loadData(getRawString(R.raw.bootstrap),"text/html", "");
+//            playerView.loadData(getRawString(R.raw.bootstrap), "text/html", "");
         }
         else {
             String uri = buildUri(true, true);
@@ -311,17 +326,18 @@ public class PlayerActivity extends AppCompatActivity {
             super.onProgressChanged(view, newProgress);
             if(newProgress == 100) {
                 if(playerConfig.FIX_LOCALSTORAGE) {
-                    String code = getString(R.string.fix_local_storage_js);
-                    code = new String(Base64.decode(code, Base64.DEFAULT));
+                    String code = getRawString(R.raw.fix_local_storage);
                     view.evaluateJavascript(code, null);
                 }
                 if(!playerConfig.FORCE_AUDIO_EXT.equals("")) {
                     String code = getString(R.string.force_audio_ext_js);
                     code = code.replace("$1", "\"" + playerConfig.FORCE_AUDIO_EXT + "\"");
-                    Log.d("fix audio", code);
                     view.evaluateJavascript(code, null);
                 }
-                Log.d("PayerActivity", "loaded");
+                if(playerConfig.ADD_GAMEPAD) {
+                    String code = getRawString(R.raw.gamepad);
+                    view.evaluateJavascript(code, null);
+                }
             }
         }
     }
@@ -335,7 +351,7 @@ public class PlayerActivity extends AppCompatActivity {
             view.setBackgroundColor(Color.WHITE);
         }
 
-        @SuppressWarnings("deprecation")
+        @Override
         public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
             super.onReceivedError(view, errorCode, description, failingUrl);
             view.setBackgroundColor(Color.WHITE);
@@ -344,7 +360,23 @@ public class PlayerActivity extends AppCompatActivity {
         @Nullable
         @Override
         public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
-            Log.d("PlayerActivity", request.getUrl().toString());
+            String req = request.getUrl().toString();
+            if(playerConfig.MANUALLY_START && req.endsWith("js/main.js")) {
+                InputStream is = getResources().openRawResource(R.raw.manually_start);
+                return new WebResourceResponse("text/javascript","utf-8",is);
+            }
+            if(playerConfig.ADD_GAMEPAD && req.endsWith("EasyMV/DirPad.png")) {
+                InputStream is = getResources().openRawResource(R.raw.dir_pad);
+                return new WebResourceResponse("image/png","",is);
+            }
+            if(playerConfig.ADD_GAMEPAD && req.endsWith("EasyMV/ActionBtn.png")) {
+                InputStream is = getResources().openRawResource(R.raw.action_button);
+                return new WebResourceResponse("image/png","",is);
+            }
+            if(playerConfig.ADD_GAMEPAD && req.endsWith("EasyMV/CancelButton.png")) {
+                InputStream is = getResources().openRawResource(R.raw.cancel_button);
+                return new WebResourceResponse("image/png","",is);
+            }
             return super.shouldInterceptRequest(view, request);
         }
     }

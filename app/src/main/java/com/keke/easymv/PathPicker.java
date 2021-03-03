@@ -8,25 +8,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.DocumentsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class PathPicker extends AppCompatActivity {
@@ -37,8 +30,8 @@ public class PathPicker extends AppCompatActivity {
     PathItemAdapter pathListAdapter;
 
     class PathItemAdapter extends ArrayAdapter<String> {
-        private int viewId = 0;
-        public PathItemAdapter(Context context, int textViewResourceId, List<String> objects){
+        private int viewId;
+        PathItemAdapter(Context context, int textViewResourceId, List<String> objects){
             super(context, textViewResourceId, objects);
             viewId = textViewResourceId;
         }
@@ -85,30 +78,35 @@ public class PathPicker extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch(requestCode) {
-            case ACTION_SELECT_DIRECTORY:
-                if(resultCode == RESULT_OK) {
-                    Uri uri = data.getData();
-                    String path = FileUtil.getFullPathFromTreeUri(uri, this);
-                    pathList.add(path);
-                    pathListAdapter.notifyDataSetChanged();
-                }
-                break;
+        if(requestCode == ACTION_SELECT_DIRECTORY){
+            if(resultCode == RESULT_OK && data != null) {
+                Uri uri = data.getData();
+                String path = FileUtil.getFullPathFromTreeUri(uri, this);
+                pathList.add(path);
+                pathListAdapter.notifyDataSetChanged();
+            }
         }
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.path_add) {
-            Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
-            intent.addCategory(Intent.CATEGORY_DEFAULT);
-            startActivityForResult(Intent.createChooser(intent, getString(R.string.select_folder)), ACTION_SELECT_DIRECTORY);
-        }
-        if(item.getItemId() == R.id.menu_ok) {
-            Intent intent = new Intent();
-            intent.putStringArrayListExtra("paths", pathList);
-            setResult(RESULT_OK, intent);
-            finish();
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.path_add:
+                intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+                intent.addCategory(Intent.CATEGORY_DEFAULT);
+                startActivityForResult(Intent.createChooser(intent, getString(R.string.select_folder)), ACTION_SELECT_DIRECTORY);
+                break;
+            case R.id.menu_ok:
+                intent = new Intent();
+                intent.putStringArrayListExtra("paths", pathList);
+                setResult(RESULT_OK, intent);
+                finish();
+                break;
+            case R.id.menu_help:
+                intent = new Intent(this, HelpActivity.class);
+                startActivity(intent);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

@@ -3,13 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/menu_help"
+        android:title="@string/help"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/path_add"
-        android:icon="@drawable/ic_add"
-        android:title="Add"
-        app:showAsAction="always" />
+        android:icon="@null"
+        android:title="@string/add"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu_ok"
         android:icon="@null"
         android:title="@android:string/ok"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 </menu>
