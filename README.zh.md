@@ -5,6 +5,8 @@
 
 版本: v1.1.0
 
+github主页：[EasyMV-AndroidRPGMVPlayer](https://github.com/KEKE046/EasyMV-AndroidRPGMVPlayer)
+
 # 简介
 
 EasyMV 具有以下特点：

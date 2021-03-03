@@ -6,6 +6,8 @@ Author: KEKE_046
 
 Version: v1.1.0
 
+Github Repo: [EasyMV-AndroidRPGMVPlayer](https://github.com/KEKE046/EasyMV-AndroidRPGMVPlayer)
+
 [中文说明](README.zh.md)
 
 # Introduction
