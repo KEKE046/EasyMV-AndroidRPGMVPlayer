@@ -74,3 +74,57 @@ RPGMakerMV生成游戏是在网页上运行的，理论上有移植到安卓平�
   * 而且一旦卸载了apk，游戏存档就会消失。
 * [AndroidLocalStorage](https://github.com/didimoo/AndroidLocalStorage) 项目提供了一种将`localStorage`储存在本地的方法，但该项目无法运行。
   * 经过修改，项目可以运行，但在玩游戏时卡顿严重，性能极差。
+
+# 简要教程
+
+第一步：找到你的游戏
+<details>
+
+![](fig/1.png)
+</details>
+第二步：找到游戏中的www文件夹
+<details>
+
+![](fig/2.png)
+</details>
+第三步：检查里面是否有index.html文件
+<details>
+
+![](fig/3.png)
+</details>
+第四步：将这个文件夹整个拷贝到你的手机上，注意这里拷贝到了**EasyMV**目录
+<details>
+
+![](fig/4.png)
+</details>
+第五步：修改成你喜欢的名字
+<details>
+
+![](fig/5.png)
+</details>
+第六步：打开EasyMV，点右上角的设置
+<details>
+
+![](fig/6.png)
+</details>
+第七步：点击添加，在弹出的目录选择框中将**EasyMV**添加到路径里面，然后点击右上角的确定。
+<details>
+
+![](fig/7.png)
+</details>
+第八步：游戏应该在列表中出现了
+<details>
+
+![](fig/8.png)
+</details>
+第九步：若有需要，可点击游戏标签上蓝色的设置按钮进行设置。（一般维持默认设置就可以了）。
+<details>
+
+![](fig/9.png)
+</details>
+
+第十步：点击游戏标签，开始游戏。
+<details>
+
+![](fig/10.png)
+</details>
